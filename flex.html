@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>flex demo</title>
+  <style>
+    input,
+    button,
+    img,
+    a {
+      touch-action: none;
+      outline: none;
+    }
+
+    button {
+      border: none;
+    }
+
+    /* 盒型 */
+    .g-flex-box {
+      display: flex;
+    }
+
+    .g-box-vertical {
+      flex-direction: column;
+    }
+
+    .g-flex-1 {
+      flex: 1 1;
+    }
+
+    .g-flex-2 {
+      flex: 2 1;
+    }
+
+    .g-flex-shrink-1 {
+      flex: 1 1;
+      flex-shrink: 0;
+    }
+
+    .g-flex-center {
+      align-items: center;
+    }
+
+    .g-align-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .g-pinterest {
+      /* 瀑布流 */
+      flex-flow: row wrap;
+    }
+
+    .g-border-box {
+      box-sizing: border-box;
+    }
+
+    /* 文字 */
+    .g-text-center {
+      text-align: center;
+    }
+
+    .g-text-right {
+      text-align: right;
+    }
+
+    .g-text-ellipsis {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .g-text-break {
+      word-break: break-word;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .g-overflow-hide {
+      overflow: hidden;
+    }
+
+    .g-relative {
+      position: relative;
+    }
+
+    .g-absolute-container {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .g-height-100 {
+      height: 100%;
+    }
+
+    .g-view-box {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .g-view-content {
+      position: relative;
+      flex: 1 1;
+    }
+
+    .g-flex-middle {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .g-no-event {
+      pointer-events: none;
+    }
+
+    .g-hide {
+      display: none;
+    }
+
+    .g-hidden {
+      visibility: hidden;
+    }
+  </style>
+  <style>
+    body {
+      margin: 5px;
+      background-color: #fff;
+    }
+
+    .demo-view {
+      background-color: #eee;
+    }
+
+    .demo-view-box {
+      position: relative;
+      float: left;
+      width: 50%;
+      height: 300px;
+      background-color: #ddd;
+      border: 5px solid #fff;
+      box-sizing: border-box;
+    }
+
+    .demo-height {
+      background-color: #ddd;
+      min-height: 50px;
+    }
+
+    .demo-width {
+      width: 20%;
+      background-color: #ccc;
+    }
+
+    .demo-r-width {
+      width: 20%;
+      background-color: #ccc;
+    }
+
+    .color-1 {
+      background-color: #ccc;
+    }
+
+    .color-2 {
+      background-color: #f8bbd0;
+    }
+
+    .color-3 {
+      background-color: #ff8a65;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- T -->
+  <div class="demo-view-box g-view-box">
+    <div class="demo-height"></div>
+    <div class="demo-view g-view-box"></div>
+  </div>
+
+  <div class="demo-view-box">
+    <textarea>
+      <div class="g-view-box" style="width: 200px;height: 200px;">
+        <div>header</div>
+        <div class="g-view-box">
+          center
+        </div>
+      </div>
+    </textarea>
+  </div>
+  <!-- 三栏 -->
+  <div class="demo-view-box g-flex-box">
+    <div class="demo-width"></div>
+    <div class="demo-view g-flex-1 g-relative"></div>
+    <div class="demo-r-width"></div>
+  </div>
+
+  <div class="demo-view-box">
+    <textarea>
+      <div class="g-flex-box" style="width: 200px;height: 200px;">
+        <div>left</div>
+        <div class="g-flex-1 g-relative" style="text-align: center;">center</div>
+        <div>right</div>
+      </div>
+    </textarea>
+  </div>
+  <!-- 门 -->
+  <div class="demo-view-box g-view-box">
+    <div class="demo-height"></div>
+    <div class="demo-view g-view-box">
+      <div class="g-absolute-container g-flex-box">
+        <div class="demo-width"></div>
+        <div class="demo-view g-flex-1 g-relative">
+          <iframe src="https://www.baidu.com/"></iframe>
+        </div>
+        <div class="demo-r-width"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-view-box">
+    <textarea>
+      <div class="g-view-box" style="width: 200px;height: 200px;">
+      <div>header</div>
+      <div class="g-view-box">
+        <div class="g-absolute-container g-flex-box">
+          <div>left</div>
+          <div class="g-flex-1 g-relative" style="text-align: center;">center</div> 
+          <div>right</div>
+        </div>
+      </div>
+    </div>
+    </textarea>
+  </div>
+
+  <!-- T -->
+  <div class="demo-view-box g-flex-box">
+    <div class="demo-width"></div>
+    <div class="demo-view g-flex-1 g-relative"></div>
+  </div>
+
+  <div class="demo-view-box">
+    <textarea>
+      <div class="g-flex-box" style="width: 200px;height: 200px;">
+          <div>left</div>
+          <div class="g-flex-1 g-relative" style="text-align: center;">center</div> 
+    </div>
+    </textarea>
+  </div>
+
+  <div class="demo-view-box g-view-box">
+    <div class="demo-view g-view-box"></div>
+    <div class="demo-height"></div>
+  </div>
+  <div class="demo-view-box">
+    <textarea>
+      <div class="g-view-box" style="width: 200px;height: 200px;">
+        <div class="g-view-box">center</div>
+        <div>bottom</div>
+      </div>
+    </textarea>
+  </div>
+
+  <div class="demo-view-box g-view-box">
+    <div class="demo-height"></div>
+    <div class="demo-view g-view-box"></div>
+    <div class="demo-height"></div>
+  </div>
+
+  <div class="demo-view-box">
+    <textarea>
+      <div class="g-view-box" style="width: 200px;height: 200px;">
+        <div>header</div>
+        <div class="g-view-box">center</div>
+        <div>bottom</div>
+      </div>
+    </textarea>
+  </div>
+
+
+  <div class="g-view-box" style="width: 200px;height: 200px;">
+    <div>header</div>
+    <div class="g-view-box">
+      <div class="g-absolute-container g-flex-box">
+        <div>left</div>
+        <div class="g-flex-1 g-relative" style="text-align: center;">center</div>
+        <div>right</div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
